@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="state">
+        <item>AN=Andaman and Nicobar Isalnds </item>
+        <item>AP=Andhra Pradesh</item>
+        <item>AR=Arunachal Pradesh</item>
+        <item>AS=Assamz</item>
+        <item>BR=Bihar</item>
+        <item>CH=Chandigarh</item>
+        <item>CT=Chhattisgarh</item>
+        <item>DN=Dadra and Nagar Haveli</item>
+        <item>DL=Delhi</item>
+        <item>GA=Goa</item>
+        <item>GJ=Gujarat</item>
+        <item>HR=Haryana</item>
+        <item>HP=Himachal Pradesh</item>
+        <item>JK=Jammu and Kashmir</item>
+        <item>JH=Jharkhand</item>
+        <item>KA=Karnataka</item>
+        <item>KL=Kerala	KL</item>
+        <item>LD=Lakshadweep</item>
+        <item>MP=Madhya Pradesh</item>
+        <item>MH=Maharashtra</item>
+        <item>MN=Manipur</item>
+        <item>ML=Meghalaya</item>
+        <item>MZ=Mizoram</item>
+        <item>NL=Nagaland</item>
+        <item>OR=Odisha</item>
+        <item>PY=Puducherry</item>
+        <item>RJ=Rajasthan</item>
+        <item>SK=Sikkim</item>
+        <item>TN=Tamil Nadu</item>
+        <item>TG=Telangana</item>
+        <item>TR=Tripura</item>
+        <item>UP=Uttar Pradesh</item>
+        <item>UT=Uttarakhand</item>
+        <item>WB=West Bengal</item>
+    </string-array>
+</resources>
