@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.AdapterView;
@@ -21,11 +22,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.ChartTouchListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.robinhood.ticker.TickerUtils;
+import com.robinhood.ticker.TickerView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,9 +62,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             gom.append(ch);
         }
-        TextView tem=findViewById(R.id.textView);
         val=gom.toString();
-        tem.setText(val);
         singleton ram= singleton.getInstance(this);
         JsonObjectRequest so=new JsonObjectRequest(Request.Method.GET,"https://api.covid19india.org/v4/min/timeseries.min.json",null,new correct(),new wrong());
         ram.requestQueue.add(so);
@@ -186,14 +192,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     class correct implements Response.Listener<JSONObject>
     {
 
-        @Override
+        class phaltu implements OnChartValueSelectedListener {
 
+            @Override
+            public void onValueSelected(Entry e, Highlight h)
+            {
+            int a=(int)e.getX();
+            int b=(int)e.getY();
+            TickerView taxi=findViewById(R.id.textView);
+            taxi.setCharacterLists(TickerUtils.provideNumberList());
+            taxi.setText(""+a+" "+b);
+            }
+
+            @Override
+            public void onNothingSelected()
+            {
+              return ;
+            }
+        }
+
+        @Override
         public void onResponse(JSONObject response)
         {
             String state=val;
-            TextView tex=findViewById(R.id.textView);
+            TickerView tex=findViewById(R.id.textView);
             x.clear();
-            tex.setText(flag+" ");
+            tex.setCharacterLists(TickerUtils.provideNumberList());
             date copy=new date(end.d,end.m,end.y);
             if(flag==0)
                 first=new date(4,5,2020);
@@ -208,7 +232,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 int counter=0;
                 while (!first.equals(end))
                 {
-                    tex.setText(x.size()+"");
                     JSONObject time = dates.getJSONObject(first.get());
                     JSONObject total = time.getJSONObject("total");
                     int batman = total.getInt("confirmed");
@@ -221,12 +244,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                  {e.printStackTrace();tex.setText("failure");}
             LineDataSet set=new LineDataSet(x,"sin");
             set.setColors(R.color.black);
-            set.setDrawCircles(false);
             set.setCircleColor(R.color.teal_700);
             LineData xo=new LineData(set);
             LineChart chart=findViewById(R.id.chart);
             chart.setData(xo);
             chart.animateX(2000,new anime());
+            chart.setHighlightPerTapEnabled(true);
+            chart.setVerticalScrollbarPosition(1);
+            phaltu catman =new phaltu();
+            chart.setOnChartValueSelectedListener(catman);
+
 
         }
     }

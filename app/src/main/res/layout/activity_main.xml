@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/superman"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        <Spinner
+    android:fillViewport="true">-->
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/superman"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <Spinner
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart"
+            android:background="@android:color/holo_orange_light"
             android:layout_width="match_parent"
             android:layout_height="400dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,6 +39,7 @@
 
         <RadioGroup
             android:orientation="horizontal"
+            android:background="@color/design_default_color_on_secondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="90dp"
@@ -46,6 +49,7 @@
 
             <RadioButton
                 android:id="@+id/one"
+                android:textColor="@color/white"
                 android:onClick="timechange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,6 +57,7 @@
 
             <RadioButton
                 android:id="@+id/two"
+                android:textColor="@color/white"
                 android:onClick="timechange"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
@@ -60,20 +65,23 @@
 
             <RadioButton
                 android:id="@+id/three"
+                android:textColor="@color/white"
                 android:onClick="timechange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="week" />
         </RadioGroup>
-
-        <TextView
+        <com.robinhood.ticker.TickerView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="129dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="17dp"
             android:text="Hello"
+            android:textColor="@android:color/holo_green_dark"
+            android:textStyle="bold"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+<!--</ScrollView>-->

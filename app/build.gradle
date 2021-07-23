@@ -32,7 +32,9 @@ repositories {
 }
 
 
-dependencies {
+dependencies
+        {
+    implementation 'com.robinhood.ticker:ticker:2.0.2'
     implementation 'com.android.volley:volley:1.2.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.jjoe64:graphview:4.2.2'
